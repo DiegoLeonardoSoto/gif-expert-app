@@ -12,7 +12,6 @@ const AddCategory = ({ onNewCategory }) => {
     e.preventDefault()
     if (inputValue.trim().length <= 1) return
 
-    //setCategories((prev) => [...prev, inputValue])
     onNewCategory(inputValue.trim())
     setInputValue('')
   }
