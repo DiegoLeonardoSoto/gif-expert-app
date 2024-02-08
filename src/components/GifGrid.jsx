@@ -1,14 +1,33 @@
+import { useEffect, useState } from 'react'
 import { getGifs } from '../helpers/getGifs'
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
 const GifGrid = ({ category }) => {
-  getGifs(category)
+  const [images, setImages] = useState([])
+
+  const getImages = async () => {
+    const newImages = await getGifs(category)
+    setImages(newImages)
+  }
+
+  useEffect(() => {
+    getImages()
+  }, [])
+
   return (
     <>
       <h3>{category}</h3>
-      <p>Hola mundo</p>
+      <ol>
+        {images.map(({ id, title }) => {
+          return <li key={id}> {title} </li>
+        })}
+      </ol>
     </>
   )
+}
+
+GifGrid.propTypes = {
+  category: PropTypes.string
 }
 
 export default GifGrid
