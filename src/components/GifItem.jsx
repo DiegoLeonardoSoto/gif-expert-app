@@ -1,4 +1,4 @@
-// eslint-disable-next-line react/prop-types
+import PropTypes from 'prop-types'
 export const GifItem = ({ title, url }) => {
   return (
     <div className="card">
@@ -6,6 +6,11 @@ export const GifItem = ({ title, url }) => {
       <h4>{title}</h4>
     </div>
   )
+}
+
+GifItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 }
 
 export default GifItem
